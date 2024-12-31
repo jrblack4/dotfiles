@@ -24,12 +24,6 @@ export MODERN_TERMINAL="true"
 # BAT
 export BAT_THEME="TwoDark"
 
-# Python
-export PYENV_ROOT="$HOME/.pyenv"
-command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
-
 export PYTHON_HOME="/usr/local/bin/python3"
 alias python="python3"
 alias pip="pip3"
@@ -42,7 +36,7 @@ alias diff="git diff --color | diff-so-fancy"
 
 # Misc
 alias ls="exa --group-directories-first"
-alias tree="exa --group-directories-first --tree --level=3"
+alias tree="exa --group-directories-first --tree --level=3 --ignore-glob 'node_modules|.git'"
 alias cat="bat"
 alias :x="exit"
 alias :q="exit"
