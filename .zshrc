@@ -17,6 +17,8 @@ export LC_ALL=en_US.UTF-8
 export GEM_HOME=$HOME/.gem
 export GEM_PATH=$HOME/.gem
 
+# Rust
+. "$HOME/.cargo/env"
 
 export NVM_DIR="$HOME/.nvm"
 export MODERN_TERMINAL="true"
@@ -31,8 +33,7 @@ alias pip="pip3"
 export PAGER='less -SX'
 
 # Git
-# alias gl="git log --pretty=format:'%C(yellow)%h%Creset %s %C(cyan)(%cr)%Creset %Cgreen<%cn>%Creset' | GREP_COLOR='0;35' egrep -i --color=always '((\\w+/)?(acct|ops|cc|mx)-[0-9]+)|$' | less -R"
-alias diff="git diff --color | diff-so-fancy"
+source ~/.zsh/git_aliases.sh
 
 # Misc
 alias ls="exa --group-directories-first"
