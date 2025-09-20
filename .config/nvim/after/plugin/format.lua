@@ -12,7 +12,7 @@ local js_filetypes = { "javascript", "typescript", "typescriptreact", "javascrip
     "javascript.tsx", "javascript.ts", "typescript.tsx", "typescript.ts" }
 
 vim.keymap.set('n', '<C-f>', function()
-  if vim.lsp.buf.server_ready() then
+  if #vim.lsp.get_active_clients({ bufnr = 0 }) > 0 then
     local ft = vim.bo.filetype;
     if table_has(js_filetypes, ft) then
       local success = pcall(function()
@@ -25,10 +25,10 @@ vim.keymap.set('n', '<C-f>', function()
       end
     else
       vim.lsp.buf.format()
-      print("Formatted with LSP")
+      print("Formatted with LSP (" .. ft .. ")")
     end
   else
-    require "bmax.util".format_buffer() -- the format buffer function mentioned on the previous code example
+    vim.cmd('normal gg=G')
     print("Formatted with gg=G")
   end
 end)
