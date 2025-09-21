@@ -18,7 +18,7 @@ local lua_opts = {
   settings = {
     Lua = {
       diagnostics = {
-        globals = { "vim" },  -- Recognize the `vim` global
+        globals = { "vim" }, -- Recognize the `vim` global
       },
       workspace = {
         library = vim.api.nvim_get_runtime_file("", true),
@@ -31,8 +31,20 @@ local lua_opts = {
 -- Setup handlers for all servers.
 require("mason-lspconfig").setup_handlers({
   function(server_name)
+    if server_name == "ts_ls" and not require("lspconfig")[server_name] then
+      server_name = "tsserver"
+    end
+
     -- Start with the common options.
     local opts = common_opts
+
+    if not lspconfig[serer_name] then
+      vim.notify(
+        ("lspconfig for '%s' not found; skipping setup"):format(server_name),
+        vim.log.levels.WARN
+      )
+      return
+    end
 
     -- If the server is lua_ls, merge in the lua-specific settings.
     if server_name == "lua_ls" then
@@ -43,4 +55,3 @@ require("mason-lspconfig").setup_handlers({
     lspconfig[server_name].setup(opts)
   end,
 })
-
