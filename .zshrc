@@ -37,7 +37,7 @@ source ~/.zsh/git_aliases.sh
 
 # Misc
 alias ls="exa --group-directories-first"
-alias tree="exa --group-directories-first --tree --level=3 --ignore-glob 'node_modules|.git'"
+alias tree="exa --group-directories-first --tree --level=3 --ignore-glob='node_modules|.git'"
 alias cat="bat"
 alias :x="exit"
 alias :q="exit"
@@ -70,3 +70,22 @@ fpath+=($HOME/.zsh/pure)
 autoload -U promptinit; promptinit
 prompt pure
 source /usr/share/nvm/init-nvm.sh
+# bun completions
+[ -s "/home/joel/.bun/_bun" ] && source "/home/joel/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+# added by Webi for pyenv
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
+
+# go
+source ~/.config/envman/PATH.env
+  
+# done
+source ~/.config/envman/PATH.env
+
+# Generated for envman. Do not edit.
+[ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"

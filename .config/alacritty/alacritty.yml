@@ -5,7 +5,7 @@ window:
   dynamic_padding: true
 
   decorations: none
-  opacity: 0.9
+  opacity: 0.7
 
 tabspaces: 2
 
